@@ -55,6 +55,10 @@ curl -X POST http://localhost:8092/api/v1/events \
 ```bash
 docker-compose up --build -d
 ```
+## Команда для генерации avro
+```bash
+./gradlew generateAvroJava
+```
 
 Запускаются:
 
