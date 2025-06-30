@@ -6,7 +6,7 @@ plugins {
 }
 group = "com.kovtynov"
 version = "$appVersion"
-sourceCompatibility = "21"
+sourceCompatibility = "24"
 
 repositories {
     mavenCentral()
