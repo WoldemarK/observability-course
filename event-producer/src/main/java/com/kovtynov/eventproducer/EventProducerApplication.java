@@ -28,7 +28,7 @@ public class EventProducerApplication implements CommandLineRunner {
     }
 
     public static void main(String[] args) {
-        log.info("Starting EventProducerApplication");
+        //log.info("Starting EventProducerApplication");
         SpringApplication.run(EventProducerApplication.class, args);
     }
 
@@ -39,7 +39,7 @@ public class EventProducerApplication implements CommandLineRunner {
 
     @Scheduled(fixedRateString = "${event.generation.interval-ms}")
     public void sendEvent() {
-        log.info("Sending event");
+        //log.info("Sending event");
         Event event = Event.newBuilder()
                 .setUid(UUID.randomUUID().toString())
                 .setSubject("subject")

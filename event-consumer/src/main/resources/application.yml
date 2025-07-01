@@ -1,22 +1,26 @@
 server:
-  port: 8087
+  port: 8091
 
 spring:
   application:
-    name: event-producer
+    name: event-consumer
+
+  datasource:
+    url: jdbc:postgresql://postgres:5432/events_db
+    username: user
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
   kafka:
     bootstrap-servers: kafka1:9092,kafka2:9093,kafka3:9094
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+    consumer:
+      group-id: event-group
     properties:
       schema.registry.url: http://schema-registry:8081
-
-event:
-  topic: events
-  generation:
-    interval-ms: 1000
+      specific.avro.reader: true
 
 management:
   endpoints:
