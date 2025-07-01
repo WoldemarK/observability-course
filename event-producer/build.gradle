@@ -27,6 +27,11 @@ dependencies {
     implementation "io.confluent:kafka-avro-serializer:$kafkaAvroSerializerVersion"
     implementation 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // SLF4J API
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    // Logback как реализация SLF4J
+    implementation 'ch.qos.logback:logback-classic:1.5.18'
 }
 
 avro {

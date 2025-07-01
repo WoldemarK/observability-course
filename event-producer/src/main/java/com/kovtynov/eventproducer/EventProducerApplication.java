@@ -1,7 +1,7 @@
 package com.kovtynov.eventproducer;
 
 import com.kovtynov.avro.Event;
-import lombok.extern.slf4j.Slf4j;
+
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -12,12 +12,14 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Slf4j
+
 @EnableScheduling
 @SpringBootApplication
 public class EventProducerApplication implements CommandLineRunner {
-
+    private static final Logger logger = LoggerFactory.getLogger(EventProducerApplication.class);
     private final KafkaTemplate<String, Event> kafkaTemplate;
 
     @Value("${event.topic}")
@@ -28,7 +30,7 @@ public class EventProducerApplication implements CommandLineRunner {
     }
 
     public static void main(String[] args) {
-        //log.info("Starting EventProducerApplication");
+        logger.info("Starting EventProducerApplication");
         SpringApplication.run(EventProducerApplication.class, args);
     }
 
@@ -39,7 +41,7 @@ public class EventProducerApplication implements CommandLineRunner {
 
     @Scheduled(fixedRateString = "${event.generation.interval-ms}")
     public void sendEvent() {
-        //log.info("Sending event");
+        logger.info("Sending event");
         Event event = Event.newBuilder()
                 .setUid(UUID.randomUUID().toString())
                 .setSubject("subject")
