@@ -1,5 +1,5 @@
 server:
-  port: 8087
+  port: 8090
 
 spring:
   application:
@@ -12,11 +12,10 @@ spring:
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
     properties:
       schema.registry.url: http://schema-registry:8081
-
 event:
   topic: events
   generation:
-    interval-ms: 1000
+    interval-ms: 1000  # Интервал генерации событий (1 сообщение в секунду)
 
 management:
   endpoints:

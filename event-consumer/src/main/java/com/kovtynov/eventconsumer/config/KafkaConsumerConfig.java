@@ -4,6 +4,8 @@ import com.kovtynov.avro.Event;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -18,8 +20,11 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfig {
 
+    private static Logger logger = LoggerFactory.getLogger(KafkaConsumerConfig.class);
+
     @Bean
     public ConsumerFactory<String, Event> consumerFactory() {
+        logger.info("Creating ConsumerFactory");
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka1:9092,kafka2:9093,kafka3:9094");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "event-group");
@@ -32,7 +37,9 @@ public class KafkaConsumerConfig {
 
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, Event> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, Event> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        logger.info("Creating ConcurrentKafkaListenerContainerFactory");
+        ConcurrentKafkaListenerContainerFactory<String, Event> factory =
+                new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }

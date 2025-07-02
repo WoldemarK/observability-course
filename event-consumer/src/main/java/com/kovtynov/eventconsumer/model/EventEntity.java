@@ -1,20 +1,27 @@
 package com.kovtynov.eventconsumer.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
+import jakarta.persistence.GenerationType;
 
-@Data
 @Entity
+@Table(name = "event_entity")
 public class EventEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "uid")
     private String uid;
+
+    @Column(name = "subject")
     private String subject;
+
+    @Column(name = "description")
     private String description;
 
 
