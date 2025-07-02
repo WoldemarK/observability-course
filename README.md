@@ -36,11 +36,11 @@ observability stack
 (Prometheus, Grafana, Loki, Tempo, Alloy)
 ````
 
-## Эндпоинты
-
-📘 Документация OpenAPI:
-* 🔗 [event-public-api](event-public-api/openapi.yaml)
-* 🔗 [event-consumer](event-consumer/openapi.yaml)
+## Grafana dashboard
+* 10122  Kafka
+* 9628 PostgreSQL Database
+* 1860 Node Exporter Full
+* https://grafana.com/grafana/dashboards/
 
 Пример запроса создания события:
 

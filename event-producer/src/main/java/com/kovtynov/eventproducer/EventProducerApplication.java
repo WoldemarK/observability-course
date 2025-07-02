@@ -18,8 +18,9 @@ import org.slf4j.LoggerFactory;
 @EnableScheduling
 @SpringBootApplication
 public class EventProducerApplication implements CommandLineRunner {
-    private static final Logger logger = LoggerFactory.getLogger(EventProducerApplication.class);
+
     private final KafkaTemplate<String, Event> kafkaTemplate;
+    private static final Logger logger = LoggerFactory.getLogger(EventProducerApplication.class);
 
     @Value("${event.topic}")
     private String topic;
