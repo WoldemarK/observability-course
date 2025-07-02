@@ -20,7 +20,7 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfig {
 
-    private static Logger logger = LoggerFactory.getLogger(KafkaConsumerConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(KafkaConsumerConfig.class);
 
     @Bean
     public ConsumerFactory<String, Event> consumerFactory() {
