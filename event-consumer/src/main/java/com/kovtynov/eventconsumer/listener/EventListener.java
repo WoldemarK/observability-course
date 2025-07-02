@@ -24,11 +24,14 @@ public class EventListener {
     @KafkaListener(topics = "events", groupId = "event-group")
     public void listen(Event event) {
         log.info("Received event {}", event);
+
         EventEntity entity = new EventEntity();
         entity.setUid(event.getUid());
         entity.setSubject(event.getSubject());
         entity.setDescription(event.getDescription());
+
         repository.save(entity);
-        System.out.println("Saved: " + entity);
+
+        log.info("Saved entity: {}", entity);
     }
 }

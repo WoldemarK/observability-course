@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,12 +37,11 @@ public class EventProducerApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        System.out.println("Avro Event producer started");
+        logger.info("Avro Event producer started");
     }
 
     @Scheduled(fixedRateString = "${event.generation.interval-ms}")
     public void sendEvent() {
-        logger.info("Sending event");
         Event event = Event.newBuilder()
                 .setUid(UUID.randomUUID().toString())
                 .setSubject("subject")
@@ -49,6 +49,6 @@ public class EventProducerApplication implements CommandLineRunner {
                 .build();
 
         kafkaTemplate.send(new ProducerRecord<>(topic, event.getUid(), event));
-        System.out.println("Sent: " + event);
+        logger.info("Sent: {}", event);
     }
 }
