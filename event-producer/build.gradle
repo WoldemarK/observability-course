@@ -27,11 +27,6 @@ dependencies {
 
     implementation "net.logstash.logback:logstash-logback-encoder:$logstashVersion"
 
-    // SLF4J API
-    implementation 'org.slf4j:slf4j-api:2.0.9'
-    // Logback как реализация SLF4J
-    implementation 'ch.qos.logback:logback-classic:1.5.18'
-
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
