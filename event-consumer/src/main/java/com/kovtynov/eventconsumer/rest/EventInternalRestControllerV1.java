@@ -17,6 +17,7 @@ import java.util.Optional;
 @RequestMapping("/internal/api/v1/events")
 public class EventInternalRestControllerV1 {
 
+
     private static final Logger log = LoggerFactory.getLogger(EventInternalRestControllerV1.class);
 
     private final EventRepository repository;

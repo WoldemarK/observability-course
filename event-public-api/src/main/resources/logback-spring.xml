@@ -1,25 +1,16 @@
-
 <configuration>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
-                <!-- Временная метка -->
                 <timestamp />
-
-                <!-- Уровень логирования -->
                 <logLevel />
-
-                <!-- Имя логгера -->
                 <loggerName />
-
-                <!-- Поток -->
                 <threadName />
-
-                <!-- Сообщение -->
                 <message />
 
-                <!-- MDC-поля (uid, subject, description) -->
                 <mdc>
+                    <includeMdcKeyName>trace_id</includeMdcKeyName>
+                    <includeMdcKeyName>span_id</includeMdcKeyName>
                     <includeMdcKeyName>uid</includeMdcKeyName>
                     <includeMdcKeyName>subject</includeMdcKeyName>
                     <includeMdcKeyName>description</includeMdcKeyName>

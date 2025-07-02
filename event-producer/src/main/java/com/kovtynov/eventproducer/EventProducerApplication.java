@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 public class EventProducerApplication implements CommandLineRunner {
 
     private final KafkaTemplate<String, Event> kafkaTemplate;
-    private static final Logger logger = LoggerFactory.getLogger(EventProducerApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(EventProducerApplication.class);
 
     @Value("${event.topic}")
     private String topic;
@@ -31,13 +31,12 @@ public class EventProducerApplication implements CommandLineRunner {
     }
 
     public static void main(String[] args) {
-        logger.info("Starting EventProducerApplication");
         SpringApplication.run(EventProducerApplication.class, args);
     }
 
     @Override
     public void run(String... args) {
-        logger.info("Avro Event producer started");
+        log.info("Avro Event producer started");
     }
 
     @Scheduled(fixedRateString = "${event.generation.interval-ms}")
@@ -49,6 +48,6 @@ public class EventProducerApplication implements CommandLineRunner {
                 .build();
 
         kafkaTemplate.send(new ProducerRecord<>(topic, event.getUid(), event));
-        logger.info("Sent: {}", event);
+        log.info("Sent: {}", event);
     }
 }
