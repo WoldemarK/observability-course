@@ -1,7 +1,6 @@
 package com.kovtynov.eventproducer;
 
 import com.kovtynov.avro.Event;
-
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
