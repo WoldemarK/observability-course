@@ -21,7 +21,9 @@ import org.slf4j.LoggerFactory;
 public class EventProducerApplication implements CommandLineRunner {
 
     private final KafkaTemplate<String, Event> kafkaTemplate;
+
     private static final Logger log = LoggerFactory.getLogger(EventProducerApplication.class);
+
 
     @Value("${event.topic}")
     private String topic;
