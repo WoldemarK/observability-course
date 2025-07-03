@@ -1,6 +1,6 @@
 package com.kovtynov.eventconsumer.model;
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -10,14 +10,9 @@ import jakarta.persistence.Table;
 public class EventEntity {
 
     @Id
-    private String  uid;
-
-    @Column(name = "subject")
+    private String uid;
     private String subject;
-
-    @Column(name = "description")
     private String description;
-
 
     public String getUid() {
         return uid;

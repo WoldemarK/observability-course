@@ -20,11 +20,8 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfig {
 
-    private static final Logger logger = LoggerFactory.getLogger(KafkaConsumerConfig.class);
-
     @Bean
     public ConsumerFactory<String, Event> consumerFactory() {
-        logger.info("Creating ConsumerFactory");
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka1:9092,kafka2:9093,kafka3:9094");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "event-group");
@@ -37,7 +34,6 @@ public class KafkaConsumerConfig {
 
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, Event> kafkaListenerContainerFactory() {
-        logger.info("Creating ConcurrentKafkaListenerContainerFactory");
         ConcurrentKafkaListenerContainerFactory<String, Event> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
