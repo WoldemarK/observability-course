@@ -1,5 +1,6 @@
 package com.kovtynov.eventpublicapi.rest;
 
+import com.kovtynov.eventpublicapi.model.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
