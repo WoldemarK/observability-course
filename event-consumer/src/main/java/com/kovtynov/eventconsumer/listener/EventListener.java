@@ -1,6 +1,5 @@
 package com.kovtynov.eventconsumer.listener;
 
-
 import com.kovtynov.avro.Event;
 import com.kovtynov.eventconsumer.model.EventEntity;
 import com.kovtynov.eventconsumer.repository.EventRepository;

@@ -28,6 +28,7 @@ public class TraceIdResponseBodyAdvice implements ResponseBodyAdvice<Object> {
                                   Class<? extends HttpMessageConverter<?>> selectedConverterType,
                                   org.springframework.http.server.ServerHttpRequest request,
                                   org.springframework.http.server.ServerHttpResponse response) {
+
         SpanContext ctx = Span.current().getSpanContext();
 
         if (ctx.isValid() && body != null) {

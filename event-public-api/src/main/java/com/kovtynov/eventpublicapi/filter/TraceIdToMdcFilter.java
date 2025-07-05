@@ -16,8 +16,7 @@ import java.io.IOException;
 public class TraceIdToMdcFilter extends OncePerRequestFilter {
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         var ctx = Span.current().getSpanContext();
         if (ctx.isValid()) {
