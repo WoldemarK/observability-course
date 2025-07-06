@@ -4,14 +4,17 @@ server:
 spring:
   application:
     name: event-consumer
+
   datasource:
     url: jdbc:postgresql://postgres:5432/events_db
     username: user
     password: password
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
   kafka:
     bootstrap-servers: kafka1:9092,kafka2:9093,kafka3:9094
     consumer:
@@ -23,21 +26,26 @@ spring:
 management:
   server:
     port: 8091
+
   endpoints:
     web:
       exposure:
         include: "*"
+
   metrics:
     export:
       prometheus:
         enabled: true
+
   endpoint:
     prometheus:
       enabled: true
+
   tracing:
     enabled: true
     sampling:
       probability: 1.0
+
     otlp:
       endpoint: http://alloy:4318
       protocol: http/protobuf
