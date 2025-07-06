@@ -12,28 +12,35 @@ spring:
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
     properties:
       schema.registry.url: http://schema-registry:8081
+
 event:
   topic: events
   generation:
     interval-ms: 1000  # Интервал генерации событий (1 сообщение в секунду)
 
 management:
-  port: 8090
+  server:
+   port: 8090
+
   endpoints:
     web:
       exposure:
         include: "*"
+
   metrics:
     export:
       prometheus:
         enabled: true
+
   endpoint:
     prometheus:
       enabled: true
+
   tracing:
     enabled: true
     sampling:
       probability: 1.0
+
     otlp:
       endpoint: http://alloy:4318
       protocol: http/protobuf

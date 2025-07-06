@@ -8,14 +8,17 @@ spring:
 management:
   server:
     port: 8092
+
   endpoints:
     web:
       exposure:
         include: "*"
+
   metrics:
     export:
       prometheus:
         enabled: true
+
   endpoint:
     prometheus:
       enabled: true
@@ -24,6 +27,7 @@ management:
     enabled: true
     sampling:
       probability: 1.0
+
     otlp:
       endpoint: http://alloy:4318
       protocol: http/protobuf
